@@ -62,19 +62,8 @@ def delete_by_position(position):
                     response=json.dumps(list_se_service.delete_by_position(int(position))),
                     mimetype="application/json")
 
-@app_list_se.route('/list_se/add_by_position',methods=['POST'])
-def add_to_position():
-    try:
-        student = request.json
-        position = request.json
-        list_se_service.add_to_position(position, student)
-
-        return Response(status=200,
-                        response=json.dumps({"message": "Adicionado exitosamente"}),
-                        mimetype="application/json")
-    except Exception as error:
-        return Response(status=409,
-                        response=json.dumps({"message": str(error)}),
-                        mimetype="application/json")
-
-
+@app_list_se.route('/list_se/add_to_position/<position>', methods=["POST"])
+def add_to_position(position):
+    return Response(status=200,
+                    responde=json.dumps(list_se_service.add_to_position(int(position), request.json)),
+                    mimetype="application/json")

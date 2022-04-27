@@ -16,6 +16,9 @@ class Student:
        else:
            raise Exception("Faltan algunos atributos")
 
+   """def __str__(self):
+       return self.name"""
+
    def validar_datos(self, my_dict):
        attributes = ["identification", "gender", "salary", "job", "name", "age", "zona_rural", "city"]
        keys = list(my_dict.keys())

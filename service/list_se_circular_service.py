@@ -2,23 +2,34 @@ from model.student import Student
 from model.list_se import ListSE
 from model.list_se_circular import ListSE_circular
 
-class list_se_circular_service:
-    def add_circular(self, data):
-        student = Student(data)
-        if data['city'] in self.cities:
-            self.students.add(student)
-        else:
-            raise Exception("La ciudad no está en la lista")
-
-    def add_to_start_circular(self, data):
-        student = Student(data)
-        if data['city'] in self.cities:
-            self.students.add_to_start(student)
-        else:
-            raise Exception("La ciudad no está en la lista")
+class ListSEcircular_service:
+    cities = ['Manizales', 'Pereira', 'Chinchina', 'Armenia']
+    def __init__(self):
+        self.students = ListSE_circular()
 
     def get_all_students_circular(self):
-        return self.student.get_all_students_circular()
+        if self.students.head == None:
+            return {"message":"La lista esta vacia"}
+        else:
+            return self.students.get_all_students_circular()
+
+    def add_student_circular(self, data):
+        student = Student(data)
+        if data['city'] in self.cities:
+            self.students.add_student_circular(student)
+            # print(self.students.head.data.name)
+        else:
+            raise Exception("La ciudad no está en la lista")
+
+    def add_student_to_start_circular(self, data):
+        student = Student(data)
+        if data['city'] in self.cities:
+            self.students.add_student_to_start_circular(student)
+        else:
+            raise Exception("La ciudad no está en la lista")
 
     def count(self):
-        pass
+        if self.students.head == None:
+            return {"message": "La lista esta vacia"}
+        return self.students.count()
+

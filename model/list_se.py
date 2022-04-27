@@ -94,25 +94,27 @@ class ListSE:
         else:
             return None
 
-    def add_to_position(self, position:int, student:Student):
-        actual = self.head
-        if position > 0 and actual <= actual + 1:
+    def add_to_position(self, position: int, student:Student):
+        if position > 0 and position <= (self.count + 1):
             if position == 1:
-                self.add_to_start(student)
+                new_node = Node(student)
+                new_node.next = self.head
+                self.head = new_node
             else:
                 temp = self.head
                 count = 1
-            while temp != None:
-                if count == position - 1:
-                    nuevo_nodo = Node(student)
-                    nuevo_nodo.next = temp.next
-                    temp.next = nuevo_nodo
-                    count += 1
-                    break
-                temp = temp.next
-                count += 1
+                while temp != None:
+                    if count == position - 1:
+                        new_node = Node(student)
+                        new_node.next = temp.next
+                        temp.next = new_node
+                        self.count = +1
+                        break
+                    temp = temp.next
+                    count = +1
+            self.count = +1
         else:
-            raise Exception ('Posicion invalida')
+            raise Exception("La posición no es válida")
 
     def intercalar_genero(self):
         pass

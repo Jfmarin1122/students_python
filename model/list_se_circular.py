@@ -7,13 +7,13 @@ class ListSE_circular:
 
     def validate_exist(self, id:str):
         temp = self.head
-        while temp != None:
+        while temp.next is not self.head:
             if temp.data.identification == id:
                 return True
             temp = temp.next
         return False
 
-    def add_circular(self, data:Student):
+    def add_student_circular(self, data:Student):
         if self.head == None:
             self.head = Node(data)
             self.head.next = self.head
@@ -26,7 +26,7 @@ class ListSE_circular:
             temp.next = Node(data)
             temp.next.next = self.head
 
-    def add_to_start_circular(self, data):
+    def add_student_to_start_circular(self, data):
         if self.head == None:
             self.head = Node(data)
             self.head.next = self.head
@@ -46,15 +46,19 @@ class ListSE_circular:
         while temp.next != self.head:
             temp = temp.next
             count += 1
+        count += 1
+        return count
 
     def get_all_students_circular(self):
         temp = self.head
         list = []
-        while temp.next != self.head:
+        while temp.next is not self.head:
             list.append(temp.data)
             temp = temp.next
         list.append(temp)
+        print(list)
         return list
+
 
 
 

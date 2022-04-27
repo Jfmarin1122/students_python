@@ -67,9 +67,9 @@ class ListSEService:
             else:
                 return {"message": "Se ha eliminado el estudiante de la lista"}
 
-    def add_to_position(self, position, student):
-        if self.students.head == None:
-            return {"message": "La lista esta vacia"}
-        else:
-            self.students.add_to_position(position, student)
-            return {"message": "Se ha agregado el estudiante en la posicion solicitada"}
+    def add_to_position(self, position, dict):
+        try:
+            self.list.add_to_position(position, Student(dict))
+            return {"message": "Adicionado exitosamente"}
+        except Exception as e:
+            return {"message": str(e)}
