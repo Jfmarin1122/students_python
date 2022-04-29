@@ -65,5 +65,5 @@ def delete_by_position(position):
 @app_list_se.route('/list_se/add_to_position/<position>', methods=["POST"])
 def add_to_position(position):
     return Response(status=200,
-                    responde=json.dumps(list_se_service.add_to_position(int(position), request.json)),
+                    response=json.dumps(list_se_service.add_to_position(int(position), request.json)),
                     mimetype="application/json")

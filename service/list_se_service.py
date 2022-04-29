@@ -69,7 +69,7 @@ class ListSEService:
 
     def add_to_position(self, position, dict):
         try:
-            self.list.add_to_position(position, Student(dict))
+            self.students.add_to_position(position, Student(dict))
             return {"message": "Adicionado exitosamente"}
         except Exception as e:
             return {"message": str(e)}

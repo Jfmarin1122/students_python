@@ -1,20 +1,21 @@
-from service.list_se_circular_service import ListSEcircular_service
+from service.list_de_service import ListDEservice
 from flask import Response, json, jsonify, Blueprint, request
 from util.util_encoder import UtilEncoder
 
-app_list_se_circular = Blueprint("app_list_se_circular", __name__)
-list_se_circular_service = ListSEcircular_service()
-@app_list_se_circular.route('/list_se_circular/all')
-def get_all_students_circular():
+app_list_de = Blueprint("app_list_de", __name__)
+
+list_de_service = ListDEservice()
+@app_list_de.route('/list_de/all')
+def get_all_students():
     return Response(status=200,
-                    response=json.dumps(list_se_circular_service.get_all_students_circular(),
-                    cls=UtilEncoder), mimetype="application/json")
+                    response=json.dumps(list_de_service.get_all_students(),
+                                        cls=UtilEncoder), mimetype="application/json")
 
-@app_list_se_circular.route('/list_se_circular', methods=['POST'])
-def add_student_circular():
+@app_list_de.route('/list_de', methods=['POST'])
+def add_student():
     try:
         data = request.json
-        list_se_circular_service.add_student_circular(data)
+        list_de_service.add_student(data)
         return Response(status=200,
                         response=json.dumps({"message": "Adicionado exitosamente"}),
                         mimetype="application/json")
@@ -23,11 +24,11 @@ def add_student_circular():
                         response=json.dumps({"message": str(error)}),
                         mimetype="application/json")
 
-@app_list_se_circular.route('/list_se_circular/addtostart',methods=['POST'])
-def add_student_to_start_circular():
+@app_list_de.route('/list_de/addtostart',methods=['POST'])
+def add_to_start():
     try:
         data = request.json
-        list_se_circular_service.add_student_to_start_circular(data)
+        list_de_service.add_to_start(data)
         return Response(status=200,
                         response=json.dumps({"message": "Adicionado exitosamente"}),
                         mimetype="application/json")
@@ -36,8 +37,8 @@ def add_student_to_start_circular():
                         response=json.dumps({"message": str(error)}),
                         mimetype="application/json")
 
-@app_list_se_circular.route('/list_se_circular/count')
+@app_list_de.route('/list_se_circular/count')
 def count():
     return Response(status=200,
-                    response=json.dumps(list_se_circular_service.count(),
+                    response=json.dumps(list_de_service.count(),
                                         cls=UtilEncoder), mimetype="application/json")

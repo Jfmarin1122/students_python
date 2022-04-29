@@ -4,6 +4,7 @@ from .student import Student
 class ListSE:
     def __init__(self):
         self.head = None                                # La cabeza está vacía
+        self.count = 0
 
     # Adicionar al final
     def add(self, data: Student):                       # Añadir elemento al final de la lista.
@@ -17,6 +18,7 @@ class ListSE:
                 temp = temp.next                        # Ayudante se corre un espacio
             # Posicionados en el último elemento
             temp.next = Node(data)                      # Agregar elemento a la fila
+        self.count = +1
 
     def add_to_start(self, data:Student):
         if self.head == None:
@@ -95,23 +97,28 @@ class ListSE:
             return None
 
     def add_to_position(self, position: int, student:Student):
-        if position > 0 and position <= (self.count + 1):
+        if position > 0:
             if position == 1:
-                new_node = Node(student)
-                new_node.next = self.head
-                self.head = new_node
+                self.add_to_start(student)
+                if position == self.count:
+                    node = Node(student)
+                    temp = self.head
+                    while temp.next.next != None:
+                        temp = temp.next
+                    node.next = temp.next
+                    temp.next = node
             else:
+                ubication = 2
                 temp = self.head
-                count = 1
-                while temp != None:
-                    if count == position - 1:
-                        new_node = Node(student)
-                        new_node.next = temp.next
-                        temp.next = new_node
-                        self.count = +1
-                        break
+                while temp.next != None and position != ubication:
+                    ubication = ubication + 1
                     temp = temp.next
-                    count = +1
+                new_node = Node(student)
+                if temp.next != None:
+                    if self.validate_exist(student.identification):
+                        raise Exception("Ya existe un estudiante con esa identificacion")
+                    new_node.next = temp.next
+                    temp.next = new_node
             self.count = +1
         else:
             raise Exception("La posición no es válida")

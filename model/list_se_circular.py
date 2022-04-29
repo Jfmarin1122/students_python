@@ -5,9 +5,9 @@ class ListSE_circular:
     def __init__(self):
         self.head = None
 
-    def validate_exist(self, id:str):
+    def validate_exist(self, id: str):
         temp = self.head
-        while temp.next is not self.head:
+        while temp.next != self.head:
             if temp.data.identification == id:
                 return True
             temp = temp.next
@@ -50,17 +50,10 @@ class ListSE_circular:
         return count
 
     def get_all_students_circular(self):
-        temp = self.head
         list = []
-        while temp.next is not self.head:
+        temp = self.head
+        while temp.next != self.head:
             list.append(temp.data)
             temp = temp.next
-        list.append(temp)
-        print(list)
+        list.append(temp.data)
         return list
-
-
-
-
-
-
