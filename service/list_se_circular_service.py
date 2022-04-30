@@ -1,5 +1,4 @@
 from model.student import Student
-from model.list_se import ListSE
 from model.list_se_circular import ListSE_circular
 
 class ListSEcircular_service:

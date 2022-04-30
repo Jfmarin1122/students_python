@@ -123,10 +123,40 @@ class ListSE:
         else:
             raise Exception("La posición no es válida")
 
-    def intercalar_genero(self):
-        pass
+    def intercalar_gender(self):
+        list_man = ListSE()
+        list_woman = ListSE()
+        man = 0
+        woman = 0
+        list_comparar_genero = ListSE()
+        temp = self.head
+        while temp != None:
+            if temp.data.gender == 1:
+                list_man.add(temp.data)
+                man = man + 1
+            if temp.data.gender == 2:
+                woman = woman + 1
+                list_woman.add(temp.data)
+            temp = temp.next
+        if man > woman:
+            mayorLongitud = man
+        else:
+            mayorLongitud = woman
+        tempman = list_man.head
+        tempwoman = list_woman.head
+        while mayorLongitud > 0:
+            if tempwoman != None:
+                if tempwoman.data != None:
+                    list_comparar_genero.add(tempwoman.data)
+                    tempwoman = tempwoman.next
+            if tempman != None:
+                if tempman.data != None:
+                    list_comparar_genero.add(tempman.data)
+                    tempman = tempman.next
+            mayorLongitud = mayorLongitud - 1
+        self.head = list_comparar_genero.head
 
-    def Mujeres_primero(self):
+    def mujeres_primero(self):
         lista_copia = ListSE()
         if self.head == None:
             return None

@@ -67,3 +67,15 @@ def add_to_position(position):
     return Response(status=200,
                     response=json.dumps(list_se_service.add_to_position(int(position), request.json)),
                     mimetype="application/json")
+
+@app_list_se.route('/list_se/intercalar_gender')
+def intercalar_gender():
+    return Response(status=200,
+                    response=json.dumps(list_se_service.intercalar_gender()),
+                    mimetype="application/json")
+
+@app_list_se.route('/list_se/mujeres_primero')
+def mujeres_primero():
+    return Response(status=200,
+                    response=json.dumps(list_se_service.mujeres_primero()),
+                    mimetype="application/json")

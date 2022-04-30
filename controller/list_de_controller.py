@@ -37,8 +37,45 @@ def add_to_start():
                         response=json.dumps({"message": str(error)}),
                         mimetype="application/json")
 
-@app_list_de.route('/list_se_circular/count')
+@app_list_de.route('/list_de/count')
 def count():
     return Response(status=200,
                     response=json.dumps(list_de_service.count(),
                                         cls=UtilEncoder), mimetype="application/json")
+
+@app_list_de.route('/list_de/invert_list')
+def invert_list():
+    return Response(status=200,
+                    response=json.dumps(list_de_service.invert_list(),
+                                        cls=UtilEncoder), mimetype="appLication/json")
+
+@app_list_de.route('/list_de/extrems')
+def head_finish():
+    return Response(status=200,
+                    response=json.dumps(list_de_service.head_finish(),
+                                        cls=UtilEncoder), mimetype="appLication/json")
+
+@app_list_de.route('/list_de/mujeres_primero')
+def mujeres_primero():
+    return Response(status=200,
+                    response=json.dumps(list_de_service.mujeres_primero()),
+                    mimetype="application/json")
+
+
+@app_list_de.route('/list_de/intercalar_gender')
+def intercalar_gender():
+    return Response(status=200,
+                    response=json.dumps(list_de_service.intercalar_gender()),
+                    mimetype="application/json")
+
+@app_list_de.route('/list_de/delete_by_data/<id>')
+def delete_by_data(id):
+    return Response(status=200,
+                    response=json.dumps(list_de_service.delete_by_data(id)),
+                    mimetype="application/json")
+
+@app_list_de.route('/list_de/delete_by_position/<position>')
+def delete_by_position(position):
+    return Response(status=200,
+                    response=json.dumps(list_de_service.delete_by_position(int(position))),
+                    mimetype="application/json")

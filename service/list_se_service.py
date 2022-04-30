@@ -73,3 +73,17 @@ class ListSEService:
             return {"message": "Adicionado exitosamente"}
         except Exception as e:
             return {"message": str(e)}
+
+    def intercalar_gender(self):
+        if self.students.head == None:
+            return {"message": "La lista esta vacia"}
+        else:
+            self.students.intercalar_gender()
+            return {"message": "Lista intercalada por genero"}
+
+    def mujeres_primero(self):
+        if self.students.head == None:
+            return {"message": "La lista esta vacia"}
+        else:
+            self.students.mujeres_primero()
+            return {"message": "Lista organizada, mujeres primero"}
