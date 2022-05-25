@@ -7,8 +7,8 @@ class ListSEcircular_service:
         self.students = ListSE_circular()
 
     def get_all_students_circular(self):
-        if self.students.head == None:
-            return {"message":"La lista esta vacia"}
+        if self.students.head is None:
+            return {"message": "La lista esta vacia"}
         else:
             return self.students.get_all_students_circular()
 

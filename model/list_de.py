@@ -159,6 +159,3 @@ class ListDE:
             return actual
         else:
             return None
-
-    def add_to_position(self):
-        pass

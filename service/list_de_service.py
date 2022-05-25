@@ -7,8 +7,8 @@ class ListDEservice:
         self.students = ListDE()
 
     def get_all_students(self):
-        if self.students.head == None:
-            return {"message":"La lista esta vacia"}
+        if self.students.head is None:
+            return {"message": "La lista esta vacia"}
         else:
             return self.students.get_all_students()
 
